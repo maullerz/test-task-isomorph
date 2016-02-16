@@ -27,9 +27,6 @@ function fetchNeededData(components, params) {
 
   const promises = needs.map(function(need) {return need(params)});
 
-  console.log('promises:');
-  console.log(promises);
-
   return Promise.all(promises);
 }
 
