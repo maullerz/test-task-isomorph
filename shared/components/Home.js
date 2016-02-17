@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-import * as Datastore from './datastore';
+import * as Datastore from '../datastore';
 
 
 export default class Home extends Component {

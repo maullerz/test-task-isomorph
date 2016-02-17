@@ -6,6 +6,10 @@
     "start": "webpack && node index.js"
   },
   "author": "Maullerz",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maullerz/test-task-isomorph.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.0.20",
@@ -20,6 +24,8 @@
     "history": "^1.17.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
-    "react-router": "^2.0.0"
+    "react-redux": "^4.4.0",
+    "react-router": "^2.0.0",
+    "redux": "^3.3.1"
   }
 }

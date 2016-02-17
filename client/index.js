@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, IndexRoute, Route, Link, browserHistory } from 'react-router';
-import App from './App';
-import Home from './Home';
-import About from './About';
-import NewsArticle from './NewsArticle';
+import App from '../shared/components/App';
+import Home from '../shared/components/Home';
+import About from '../shared/components/About';
+import NewsArticle from '../shared/components/NewsArticle';
 
 
 

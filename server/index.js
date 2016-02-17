@@ -5,8 +5,8 @@ import { RouterContext, match } from 'react-router';
 import createLocation           from 'history/lib/createLocation';
 import path                     from 'path';
 
-import routes                   from './src/routes';
-import getNewsHeaders           from './src/datastore';
+import routes                   from '../shared/routes';
+import getNewsHeaders           from '../shared/datastore';
 
 const app = express();
 
