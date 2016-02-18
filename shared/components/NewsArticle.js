@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { IndexLink } from 'react-router';
+import { connect } from 'react-redux';
 
-import * as Datastore from '../datastore';
+import fetchData from '../lib/fetchDataDecorator';
+import * as NewsActions from '../actions/NewsActions';
 
 
+@fetchData((state, dispatch, params) => dispatch(NewsActions.getArticleById(params.articleId)))
+@connect(state => ({ currentArticle: state.currentArticle }), NewsActions)
 export default class NewsArticle extends Component {
 
-  static promiseNeeded = [
-    Datastore.getArticleById
-  ]
-
   render() {
-    const articleData = this.props.params.data;
+    const articleData = this.props.currentArticle;
 
     return (
       <div>

@@ -1,20 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, IndexRoute, Route, Link, browserHistory } from 'react-router';
-import App from '../shared/components/App';
-import Home from '../shared/components/Home';
-import About from '../shared/components/About';
-import NewsArticle from '../shared/components/NewsArticle';
+import { Router } from 'react-router';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+
+import routes from '../shared/routes';
+import immutifyState from '../shared/lib/immutifyState';
+import promiseMiddleware from '../shared/lib/promiseMiddleware';
+import reducer from 'reducers/NewsReducer';
 
 
+// const initialState = immutifyState(window.INITIAL_STATE);
+const initialState = window.INITIAL_STATE;
+const history = createBrowserHistory();
+const store = applyMiddleware(promiseMiddleware)(createStore)(reducer, initialState);
 
-ReactDOM.render((
-    <Router history={browserHistory}>
-      <Route path="/" component={App}>
-        <IndexRoute component={Home}/>
-        <Route path="about" component={About}/>
-        <Route path="/news/:articleId" component={NewsArticle}/>
-      </Route>
+ReactDOM.render(
+  <Provider store={store}>
+    <Router children={routes} history={history}>
     </Router>
-  ), document.getElementById('react-view')
+  </Provider>,
+  document.getElementById('react-view')
 );

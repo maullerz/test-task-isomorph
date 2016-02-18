@@ -5,9 +5,9 @@ const CLIENT_DIR = path.resolve(__dirname, 'client');
 const DIST_DIR = path.resolve(__dirname, 'dist');
 
 const aliases = {
-  components: path.resolve(CLIENT_DIR, 'components'),
-  reducers: path.resolve(CLIENT_DIR, 'reducers'),
-  actions: path.resolve(CLIENT_DIR, 'actions')
+  components: path.resolve(CLIENT_DIR, '../shared/components'),
+  reducers: path.resolve(CLIENT_DIR, '../shared/reducers'),
+  actions: path.resolve(CLIENT_DIR, '../shared/actions'),
 };
 
 module.exports = {

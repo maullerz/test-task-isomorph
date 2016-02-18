@@ -1,35 +1,35 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
-import * as Datastore from '../datastore';
+import fetchData from '../lib/fetchDataDecorator';
+import * as NewsActions from '../actions/NewsActions';
 
 
+@fetchData((state, dispatch) => dispatch(NewsActions.getNewsFeed()))
+@connect(state => ({ newsFeed: state.newsFeed }), NewsActions)
 export default class Home extends Component {
 
-  static promiseNeeded = [
-    Datastore.getNewsList
-  ]
+  newsListNode() {
+    const newsFeed = this.props.newsFeed;
+
+    console.log('newsFeed:');
+    console.log(newsFeed);
+
+    return newsFeed.map((article, index) => (
+      <li key={index}>
+        <Link to={'/news/'+article.id}>{article.head}</Link>
+      </li>
+    ), this);
+  }
 
   render() {
-    const newsFeed = this.props.params.data;
-
     return (
       <div>
         <ul>
-          {newsFeed.map(article => (
-            <li key={article.id}>
-              <Link
-                to={{
-                  pathname: `/news/${article.id}`,
-                  state: { returnTo: this.props.location.pathname }
-                }}
-              >
-                {article.head}
-              </Link>
-            </li>
-          ), this)}
+          {this.newsListNode()}
         </ul>
-        <Link to={'about'}>
+        <Link to='/about'>
           <p>About this site</p>
         </Link>
       </div>
